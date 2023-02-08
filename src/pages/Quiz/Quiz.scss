@@ -1,0 +1,31 @@
+.quiz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__heading {
+        display: block;
+        text-align: center;
+    }
+    &__start-btn {
+        font-size: 0.8rem;
+        background-color: black;
+        border: none;
+        border-radius: 0.2rem;
+        color: white;
+        padding: 0.3rem 0.5rem;
+        font-weight: bold;
+    }
+    &__question-container {
+        padding: 0.2rem;
+        text-align: center;
+        &--message {
+            color: red;
+            font-weight: 700;
+        }
+    }
+}
+
+.correct{
+    color: green;
+    font-weight: 700;
+}

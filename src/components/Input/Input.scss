@@ -3,4 +3,26 @@
         font-size: 0.7rem;
         font-weight: 400;
     }
+    &__box {
+        width: 8rem;
+        font-size: 0.7rem;
+        border: 1px solid black;
+        border-radius: 0.2rem;
+        padding: 0.2rem 0.5rem;
+        text-decoration: none;
+    }
+    &__box:focus {
+        outline-width: 0;
+    }
+    &__btn {
+        font-size: 0.7rem;
+        margin: 0 0.5rem;
+        background-color: black;
+        border: 1px solid black;
+        border-radius: 0.2rem;
+        color: white;
+        font-weight: 600;
+        padding: 0.2rem 0.5rem;
+    }
+    
 }
