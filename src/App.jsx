@@ -6,7 +6,6 @@ import Quiz from "./pages/Quiz/Quiz";
 import FootballTeamOrfaniser from "./pages/FootballTeamOrganiser/FootballTeamOrganiser";
 import Home from './pages/Home/Home';
 
-
 function App() {
   
   return (
