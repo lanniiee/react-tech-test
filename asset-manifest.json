@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/react-tech-test/static/css/main.cd7e55a8.css",
+    "main.js": "/react-tech-test/static/js/main.1545a62b.js",
+    "static/js/787.7f62d34e.chunk.js": "/react-tech-test/static/js/787.7f62d34e.chunk.js",
+    "static/media/footballPitch.png": "/react-tech-test/static/media/footballPitch.77db33c33ab6c3a8fb39.png",
+    "index.html": "/react-tech-test/index.html",
+    "main.cd7e55a8.css.map": "/react-tech-test/static/css/main.cd7e55a8.css.map",
+    "main.1545a62b.js.map": "/react-tech-test/static/js/main.1545a62b.js.map",
+    "787.7f62d34e.chunk.js.map": "/react-tech-test/static/js/787.7f62d34e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cd7e55a8.css",
+    "static/js/main.1545a62b.js"
+  ]
+}
