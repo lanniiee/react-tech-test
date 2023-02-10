@@ -2,6 +2,8 @@ import "./FootballTeamOrganiser.scss";
 import footballersArr from "../../data/football-team.data copy.json";
 import { useState } from "react";
 import Modal from "../../components/Modal/Modal";
+import Rota from "../../components/Rota/Rota";
+
 
 const FootballTeamOrganiser = () => {
     const [goalkeepersArr, setGoalkeepersArr] = useState(footballersArr.filter(e => e.position == "Goalkeeper"));
@@ -10,9 +12,10 @@ const FootballTeamOrganiser = () => {
     const [attackersArr, setAttackersArr] = useState(footballersArr.filter(e => e.position == "Attacker"));
     const [showModal, setShowModal] = useState(false);
     const [playerArr, setPlayerArr] = useState([]);
+    const [selectedPlayer, setSelectedPlayer] = useState({});
+    const [selectedPlayerLoading, setSelectedPlayerLoading] = useState(false);
 
     const toggleModal = (e) => {
-        
         if (e.target.textContent == "Select Goalkeeper ▼") {
             setPlayerArr(goalkeepersArr);
         } else if (e.target.textContent == "Select Defender ▼") {
@@ -25,6 +28,19 @@ const FootballTeamOrganiser = () => {
         setShowModal(!showModal)
     }
 
+    const selectPlayer = (player) => {
+        let players = [...playerArr];
+        setSelectedPlayer(player)
+        for(let i = 0; i < players.length; i++) {
+            if (players[i].name == player.name) {
+                let arr;
+                players.splice(i, i+1)
+            }
+        }
+        setPlayerArr(players)
+        setSelectedPlayerLoading(true);
+    }
+
 
     return (
         <div className="football">
@@ -35,9 +51,8 @@ const FootballTeamOrganiser = () => {
                 <h1 className="football__select" onClick={toggleModal}>Select Midfielder ▼</h1>
                 <h1 className="football__select" onClick={toggleModal}>Select Attacker ▼</h1>
             </div>
-            
-            {showModal && <Modal playerArr={playerArr} toggleModal={toggleModal}/>}
-
+            {showModal && <Modal playerArr={playerArr} toggleModal={toggleModal} selectPlayer={selectPlayer}/>}
+            <Rota selectedPlayer={selectedPlayer} selectedPlayerLoading={selectedPlayerLoading}/>
         </div>
     )
 }

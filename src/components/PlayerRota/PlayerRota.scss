@@ -1,0 +1,23 @@
+.player-rota {
+    background-color: none;
+    width: 5rem;
+    height: 5rem;
+    &__pic {
+        width: 3rem;
+        border-radius: 3rem;
+        border: 1px solid black;
+        background-color: white;
+    }
+    &__name {
+        font-size: 0.6rem;
+        background-color: white;
+        width: 3rem;
+        text-align: center;
+    }
+}
+
+.Goalkeeper {
+    position: relative;
+    top: 3.5rem;
+    left: 13.5rem;
+}

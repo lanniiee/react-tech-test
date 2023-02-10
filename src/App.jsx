@@ -10,15 +10,15 @@ function App() {
   
   return (
     <div className="App">
-      <div>
         <Nav/>
+      <div className='App__content'>
+        <Routes>
+          <Route path="*" element={<Home/>} />
+          <Route path="/weather" element={<Weather/>} />
+          <Route path="/quiz" element={<Quiz/>} />
+          <Route path='/football' element={<FootballTeamOrfaniser/>} />
+        </Routes>
       </div>
-      <Routes>
-        <Route path="*" element={<Home/>} />
-        <Route path="/weather" element={<Weather/>} />
-        <Route path="/quiz" element={<Quiz/>} />
-        <Route path='/football' element={<FootballTeamOrfaniser/>} />
-      </Routes>
     </div>
   );
 }
