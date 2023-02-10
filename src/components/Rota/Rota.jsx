@@ -1,12 +1,12 @@
 import "./Rota.scss";
 import PlayerRota from "../PlayerRota/PlayerRota";
 
-const Rota = ({selectedPlayer, selectedPlayerLoading}) => {
+const Rota = ({selectedPlayers, selectedPlayerLoading}) => {
 
 
     return (
         <div className="rota">
-            <PlayerRota  selectedPlayer={selectedPlayer} selectedPlayerLoading={selectedPlayerLoading}/>
+            <PlayerRota  selectedPlayers={selectedPlayers} selectedPlayerLoading={selectedPlayerLoading}/>
         </div>
     )
 }

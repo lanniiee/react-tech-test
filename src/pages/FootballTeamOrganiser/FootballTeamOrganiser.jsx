@@ -13,6 +13,7 @@ const FootballTeamOrganiser = () => {
     const [showModal, setShowModal] = useState(false);
     const [playerArr, setPlayerArr] = useState([]);
     const [selectedPlayer, setSelectedPlayer] = useState({});
+    const [selectedPlayers, setSelectedPlayers] = useState([]);
     const [selectedPlayerLoading, setSelectedPlayerLoading] = useState(false);
 
     const toggleModal = (e) => {
@@ -29,16 +30,77 @@ const FootballTeamOrganiser = () => {
     }
 
     const selectPlayer = (player) => {
-        let players = [...playerArr];
         setSelectedPlayer(player)
-        for(let i = 0; i < players.length; i++) {
-            if (players[i].name == player.name) {
-                let arr;
-                players.splice(i, i+1)
+        let players = [...selectedPlayers];
+        let keeperCount = 0;
+        let midfielderCount = 0;
+        let defenderCount = 0;
+        let attackerCount = 0;
+
+        for (let i = 0; i < players.length; i++) {
+            if (players[i].position == "Goalkeeper") {
+                keeperCount++
+            } else if (players[i].position == "Defender") {
+                defenderCount++
+            } else if (players[i].position == "Midfielder") {
+                midfielderCount++
+            } else if (players[i].position == "Attacker") {
+                attackerCount++
             }
         }
-        setPlayerArr(players)
-        setSelectedPlayerLoading(true);
+
+        if (!players.includes(player.name)) {
+            if ((player.position == "Goalkeeper" && keeperCount == 0) || (player.position == "Defender" && defenderCount < 3) || (player.position == "Midfielder" && midfielderCount < 4) || (player.position == "Attacker" && attackerCount < 3)) {
+                players.push(player)
+                setSelectedPlayers(players)
+                removePlayer(player)
+                setSelectedPlayerLoading(true)
+            }
+        }
+
+    }
+
+    const removePlayer = (player) => {
+        let arr = [];
+        if (player.position == "Goalkeeper") {
+            for (let i = 0; i < goalkeepersArr.length; i++) {
+                arr = [...goalkeepersArr];
+                if (player.name == arr[i].name) {
+                    arr.splice(i, i+1)
+                    setGoalkeepersArr(arr)
+                    setPlayerArr(arr)
+                }
+            }
+
+        } else if (player.position == "Defender") {
+            for (let i = 0; i < defendersArr.length; i++) {
+                arr = [...defendersArr];
+                if (player.name == arr[i].name) {
+                    arr.splice(i, i+1)
+                    setDefendersArr(arr)
+                    setPlayerArr(arr)
+                }
+            }
+
+        } else if (player.position == "Midfielder") {
+            for (let i = 0; i < midfieldersArr.length; i++) {
+                arr = [...midfieldersArr];
+                if (player.name == arr[i].name) {
+                    arr.splice(i, i+1)
+                    setMidfieldersArr(arr)
+                    setPlayerArr(arr)
+                }
+            }
+        } else if (player.position == "Attacker") {
+            for (let i = 0; i < attackersArr.length; i++) {
+                arr = [...attackersArr];
+                if (player.name == arr[i].name) {
+                    arr.splice(i, i+1)
+                    setAttackersArr(arr)
+                    setPlayerArr(arr)
+                }
+            }
+        } 
     }
 
 
@@ -52,7 +114,7 @@ const FootballTeamOrganiser = () => {
                 <h1 className="football__select" onClick={toggleModal}>Select Attacker ▼</h1>
             </div>
             {showModal && <Modal playerArr={playerArr} toggleModal={toggleModal} selectPlayer={selectPlayer}/>}
-            <Rota selectedPlayer={selectedPlayer} selectedPlayerLoading={selectedPlayerLoading}/>
+            <Rota selectedPlayers={selectedPlayers} selectedPlayerLoading={selectedPlayerLoading}/>
         </div>
     )
 }
